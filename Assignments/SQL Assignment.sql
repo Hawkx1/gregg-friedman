@@ -166,6 +166,7 @@ ORDER BY SUM(a.balance) DESC;
 
 # Get a list of all customers with the last name "Smith".
 SELECT * FROM customers WHERE name LIKE '%Smith';
+
 # Get the total balance of all accounts held by the Smiths.
 SELECT SUM(a.balance) AS "Smith Total" FROM customers c JOIN accounts_customers ac ON c.customer_id = ac.customer_id
 JOIN accounts a ON ac.account_id = a.account_id WHERE name LIKE '%Smith';
