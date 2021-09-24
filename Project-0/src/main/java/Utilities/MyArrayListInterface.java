@@ -12,7 +12,7 @@ public interface MyArrayListInterface {
 
     boolean isEmpty();
 
-    boolean isIn(Object x);
+    boolean existsIn(Object x);
 
     int find(Object x);
 

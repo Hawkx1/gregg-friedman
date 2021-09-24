@@ -1,8 +1,5 @@
 package Utilities;
 
-import javax.jws.Oneway;
-import java.util.ArrayList;
-
 public class MyArrayList implements MyArrayListInterface{
 
     private Object[] arrayList;
@@ -24,7 +21,7 @@ public class MyArrayList implements MyArrayListInterface{
 
     @Override
     public int size() {
-        return 0;
+        return elementsInArray;
     }
 
     @Override
@@ -34,41 +31,94 @@ public class MyArrayList implements MyArrayListInterface{
         }
     }
 
+    //Add an element anywhere in the array or return an error if out of bounds
     @Override
-    public void add(int index, Object x) {
+    public void add(int index, Object o) {
+        if(checkIfArrayFull()) {
+            copyArray("double");
+        }
 
+        if(index >= arrayList.length) {
+            System.out.println("The index is out of bounds for this list");
+            System.exit(-1);
+        }
+
+        Object ob = arrayList[index];
+        arrayList[index] = o;
+
+        Object ob2;
+
+        for(int i = index; i < arrayList.length - 1; i++) {
+            ob2 = arrayList[i+1];
+            arrayList[i+1] = ob;
+            ob = ob2;
+        }
+
+        copyArray("");
+        elementsInArray++;
     }
 
+    //Allows to retrieve a value at any point of the array or return an error if out of bounds
     @Override
     public Object get(int index) {
-        return null;
+        Object o = null;
+
+        try {
+            o = arrayList[index];
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("The index that you entered is not within the bounds of this list");
+            System.exit(-1);
+        }
+        return o;
     }
 
+    //Checks to see if the array is empty
     @Override
     public boolean isEmpty() {
-        return false;
+
+        return elementsInArray == 0;
     }
 
+    //Checks to see if an object exists in the ArrayList
     @Override
-    public boolean isIn(Object x) {
-        return false;
+    public boolean existsIn(Object o) {
+
+        return find(o) >= 0;
     }
 
+    //Returns the first index of first occurrence of the object provided
     @Override
-    public int find(Object x) {
-        return 0;
+    public int find(Object o) {
+        for(int i = 0; i < arrayList.length; i++) {
+            if(o.equals(arrayList[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
+    //Removes the first occurrence od the object provided
     @Override
-    public void remove(Object x) {
-
+    public void remove(Object o) {
+        for (int i = 0; i < elementsInArray; i++) {
+            if(o.equals(arrayList[i])) {
+                arrayList[i] = null;
+                elementsInArray--;
+                copyArray("");
+                return;
+            }
+        }
     }
 
+    //Checks to see if the ArrayList is full
     private boolean checkIfArrayFull() {
         return this.arrayList.length == this.elementsInArray;
     }
 
-    private void copyArray(int size, String str) {
+    //Copies the current ArrayList to an array double the size of the current one
+    private void copyArray(String str) {
+        int size = 0;
         if(str.equals("double")) {
             size = this.arrayList.length * 2;
         } else {
@@ -76,8 +126,19 @@ public class MyArrayList implements MyArrayListInterface{
         }
         Object[] tempArray = new Object[size];
 
-        int tempElement = 0;
+        int temp = 0;
+
+        for(int i = 0; i < arrayList.length; i++, temp++) {
+            if(arrayList[i] == null) {
+                temp--;
+                continue;
+            }
+
+            tempArray[temp] = arrayList[i];
+        }
+
+        arrayList = null;
+        arrayList = new Object[tempArray.length];
+        arrayList = tempArray;
     }
-
-
 }
