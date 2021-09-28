@@ -1,4 +1,6 @@
-import java.util.Scanner;
+import DAO.ProjectDAO;
+
+import java.sql.SQLException;
 
 public class BankMain {
 
@@ -9,8 +11,14 @@ public class BankMain {
 //        System.out.println("Please enter your password: ");
 //        password = pass.nextLine();
 
-    public static void main(String[] args) {
-        String username;
+    public static void main(String[] args) throws SQLException {
+//        MyArrayList myList = new MyArrayList();
+//        myList.add(2);
+//        myList.add(4);
+//        myList.add(6);
+//        System.out.println(myList.get(1));
+        ProjectDAO.checkLogin();
+        /*String username;
         String password;
         Scanner user = new Scanner(System.in);
         Scanner pass = new Scanner(System.in);
@@ -23,6 +31,10 @@ public class BankMain {
         while (running) {
             switch (input) {
                 case "1":
+                    System.out.println("Enter your User Name: ");
+                    username = user.nextLine();
+                    System.out.println("Enter Your Password: ");
+                    password = pass.nextLine();
 
                     break;
                 case "2":
@@ -33,6 +45,6 @@ public class BankMain {
                     running = false;
                     break;
             }
-        }
+        } */
     }
 }

@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9e87003-167a-4e83-a74f-19e7a50acbd1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/BankMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ProjectDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Log.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BankMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BankMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/ConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayListInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayListInterface.java" afterDir="false" />
     </list>
@@ -18,8 +22,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -45,6 +51,20 @@
       <recent name="C:\Users\Hawkx1\Documents\Project-0\src\main\resources" />
       <recent name="C:\Users\Hawkx1\Documents\Project-0\src\main\java" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="BankMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BankMain" />
+      <module name="Project-0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BankMain" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -73,5 +93,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

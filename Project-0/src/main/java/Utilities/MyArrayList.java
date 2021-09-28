@@ -3,10 +3,10 @@ package Utilities;
 public class MyArrayList implements MyArrayListInterface{
 
     private Object[] arrayList;
-    private int elementsInArray;
+    private int elementsInArray = 1;
 
     public MyArrayList() {
-        this(10);
+        this(1);
     }
 
     public MyArrayList(int i) {
@@ -16,7 +16,7 @@ public class MyArrayList implements MyArrayListInterface{
         }
 
         this.arrayList = new Object[i];
-        this.elementsInArray = 0;
+        this.elementsInArray = 1;
     }
 
     @Override
@@ -25,10 +25,13 @@ public class MyArrayList implements MyArrayListInterface{
     }
 
     @Override
-    public void add(Object x) {
+    public void add(Object o) {
         if(checkIfArrayFull()) {
-
+            copyArray("double");
         }
+
+        arrayList[elementsInArray] = o;
+        elementsInArray++;
     }
 
     //Add an element anywhere in the array or return an error if out of bounds
@@ -73,18 +76,9 @@ public class MyArrayList implements MyArrayListInterface{
         return o;
     }
 
-    //Checks to see if the array is empty
     @Override
-    public boolean isEmpty() {
-
-        return elementsInArray == 0;
-    }
-
-    //Checks to see if an object exists in the ArrayList
-    @Override
-    public boolean existsIn(Object o) {
-
-        return find(o) >= 0;
+    public void clear() {
+        arrayList = null;
     }
 
     //Returns the first index of first occurrence of the object provided

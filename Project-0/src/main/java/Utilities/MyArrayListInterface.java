@@ -10,9 +10,7 @@ public interface MyArrayListInterface {
 
     Object get(int index);
 
-    boolean isEmpty();
-
-    boolean existsIn(Object x);
+    void clear();
 
     int find(Object x);
 
