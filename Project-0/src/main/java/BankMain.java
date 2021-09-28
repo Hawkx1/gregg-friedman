@@ -1,4 +1,4 @@
-import DAO.ProjectDAO;
+import DAO.LoginDAO;
 
 import java.sql.SQLException;
 
@@ -17,7 +17,7 @@ public class BankMain {
 //        myList.add(4);
 //        myList.add(6);
 //        System.out.println(myList.get(1));
-        ProjectDAO.checkLogin();
+        LoginDAO.checkLogin();
         /*String username;
         String password;
         Scanner user = new Scanner(System.in);

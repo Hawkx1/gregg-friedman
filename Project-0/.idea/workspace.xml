@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9e87003-167a-4e83-a74f-19e7a50acbd1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ProjectDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Log.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/AccountsItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/CtAItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/CustomersItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/LoginItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BankMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BankMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayListInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayListInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +22,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
