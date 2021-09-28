@@ -1,14 +1,19 @@
 package Utilities;
-
-public class MyArrayList implements MyArrayListInterface{
+/*
+This is my implementation of a simple arraylist collection. It implements a simplified list interface.
+ */
+public class MyArrayList<T> implements MyArrayListInterface<T>{
 
     private Object[] arrayList;
-    private int elementsInArray = 1;
+    private int elementsInArray = 5;
 
     public MyArrayList() {
-        this(1);
+        arrayList = new Object[elementsInArray];
     }
 
+    /*
+    This is the constructor that sets an initial size based on int parameter.
+     */
     public MyArrayList(int i) {
         if(i <= 0) {
             System.out.println("Negative number given please try again");

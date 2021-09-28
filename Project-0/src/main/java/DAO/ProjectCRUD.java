@@ -1,5 +1,7 @@
 package DAO;
 
+import Utilities.MyArrayList;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public interface ProjectCRUD<T> {
     //read
         //query data from database, fill in empty model object
         public T getItemByID(int id) throws SQLException;
-        public List<T> getAllItems() throws SQLException;
+        public MyArrayList<T> getAllItems() throws SQLException;
    //delete
         //remove by ID
         public void deleteByID(int id) throws SQLException;

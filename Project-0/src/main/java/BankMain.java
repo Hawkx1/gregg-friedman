@@ -20,9 +20,7 @@ public class BankMain {
         LoginDAO.checkLogin();
         /*String username;
         String password;
-        Scanner user = new Scanner(System.in);
-        Scanner pass = new Scanner(System.in);
-        Scanner sc = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("===MAIN MENU===\nEnter selection:\n\n1) Register an Account\n2) Login\nQ) Quit");
         String input = sc.nextLine();

@@ -1,5 +1,7 @@
 package DAO;
 
+import Utilities.MyArrayList;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +24,7 @@ public class LoginDAO<LoginItem> implements ProjectCRUD<LoginItem> {
     }
 
     @Override
-    public List<LoginItem> getAllItems() throws SQLException {
+    public MyArrayList<LoginItem> getAllItems() throws SQLException {
         return null;
     }
 
@@ -32,18 +34,20 @@ public class LoginDAO<LoginItem> implements ProjectCRUD<LoginItem> {
     }
 
     public static void checkLogin() throws SQLException {
-//
-//        String userName;
-//        String password;
-//
-//        String sql = "SELECT * FROM logins";
-//        Statement stmt = kahn.createStatement();
-//        ResultSet rs = stmt.executeQuery(sql);
-//
-//        userName = rs.getString("username");
-//        password = rs.getString("password");
-//
-//        System.out.println(userName);
-//        System.out.println(password);
+
+        String userName;
+        String password;
+
+        String sql = "SELECT * FROM logins";
+        Statement stmt = kahn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while(rs.next()) {
+            userName = rs.getString("username");
+            password = rs.getString("password");
+
+            System.out.println(userName);
+            System.out.println(password);
+        }
     }
 }

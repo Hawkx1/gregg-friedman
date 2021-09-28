@@ -1,18 +1,18 @@
 package Utilities;
 
-public interface MyArrayListInterface {
+public interface MyArrayListInterface<T> {
 
     int size();
 
-    void add(Object x);
+    void add(T t);
 
-    void add(int index, Object x);
+    void add(int index, T t);
 
     Object get(int index);
 
     void clear();
 
-    int find(Object x);
+    int find(T t);
 
-    void remove(Object x);
+    void remove(T t);
 }
