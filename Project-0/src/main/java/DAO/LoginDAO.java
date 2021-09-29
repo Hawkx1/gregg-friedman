@@ -1,21 +1,19 @@
 package DAO;
 
 import Utilities.MyArrayList;
+import models.LoginItem;
+import java.sql.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-
-public class LoginDAO<LoginItem> implements ProjectCRUD<LoginItem> {
+public class LoginDAO implements ProjectCRUD<LoginItem> {
     private static Connection kahn;
 
     public LoginDAO(Connection kahn) { this.kahn = kahn; }
 
     @Override
     public void save(LoginItem row) throws SQLException {
-
+        String sql = "SELECT * FROM logins WHERE customer_id = ?";
+        PreparedStatement pstmt = kahn.prepareStatement(sql);
+        pstmt.setInt(1, row.getCustomer_id());
     }
 
     @Override
@@ -33,7 +31,7 @@ public class LoginDAO<LoginItem> implements ProjectCRUD<LoginItem> {
 
     }
 
-    public static void checkLogin() throws SQLException {
+    public static boolean checkLogin(String user, String pass) throws SQLException {
 
         String userName;
         String password;
@@ -43,11 +41,13 @@ public class LoginDAO<LoginItem> implements ProjectCRUD<LoginItem> {
         ResultSet rs = stmt.executeQuery(sql);
 
         while(rs.next()) {
-            userName = rs.getString("username");
+            userName = rs.getString("user_name");
             password = rs.getString("password");
 
-            System.out.println(userName);
-            System.out.println(password);
+            if (userName.equals(user) && password.equals(pass)) {
+                return true;
+            }
         }
+        return false;
     }
 }

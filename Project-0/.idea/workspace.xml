@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c9e87003-167a-4e83-a74f-19e7a50acbd1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BankMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BankMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CtADAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CtADAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CtADAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CustomersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CustomersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayListInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayListInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/CtAItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/CtAItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/CustomersItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/CustomersItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

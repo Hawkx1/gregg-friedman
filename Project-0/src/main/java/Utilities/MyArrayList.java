@@ -1,14 +1,20 @@
 package Utilities;
+
+import java.util.Arrays;
+
 /*
 This is my implementation of a simple arraylist collection. It implements a simplified list interface.
  */
 public class MyArrayList<T> implements MyArrayListInterface<T>{
 
     private Object[] arrayList;
-    private int elementsInArray = 5;
+    private int elementsInArray = 0;
+    private int size;
 
     public MyArrayList() {
-        arrayList = new Object[elementsInArray];
+
+        arrayList = new Object[5];
+        size = 5;
     }
 
     /*
@@ -21,29 +27,31 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
         }
 
         this.arrayList = new Object[i];
-        this.elementsInArray = 1;
+        this.elementsInArray = 0;
+        this.size = i;
     }
 
     @Override
     public int size() {
-        return elementsInArray;
+        return size;
     }
 
+    //adding an item to the end of the collection
     @Override
-    public void add(Object o) {
+    public void add(T t) {
         if(checkIfArrayFull()) {
-            copyArray("double");
+            DoubleArray();
         }
 
-        arrayList[elementsInArray] = o;
+        arrayList[elementsInArray] = t;
         elementsInArray++;
     }
 
     //Add an element anywhere in the array or return an error if out of bounds
     @Override
-    public void add(int index, Object o) {
+    public void add(int index, T t) {
         if(checkIfArrayFull()) {
-            copyArray("double");
+            DoubleArray();
         }
 
         if(index >= arrayList.length) {
@@ -52,7 +60,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
         }
 
         Object ob = arrayList[index];
-        arrayList[index] = o;
+        arrayList[index] = t;
 
         Object ob2;
 
@@ -62,7 +70,6 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
             ob = ob2;
         }
 
-        copyArray("");
         elementsInArray++;
     }
 
@@ -88,23 +95,22 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
 
     //Returns the first index of first occurrence of the object provided
     @Override
-    public int find(Object o) {
+    public int find(T t) {
         for(int i = 0; i < arrayList.length; i++) {
-            if(o.equals(arrayList[i])) {
+            if(t.equals(arrayList[i])) {
                 return i;
             }
         }
         return -1;
     }
 
-    //Removes the first occurrence od the object provided
+    //Removes element at the specified index, and then shift the remaining elements to close the gap
     @Override
-    public void remove(Object o) {
+    public void remove(T t) {
         for (int i = 0; i < elementsInArray; i++) {
-            if(o.equals(arrayList[i])) {
+            if(t.equals(arrayList[i])) {
                 arrayList[i] = null;
                 elementsInArray--;
-                copyArray("");
                 return;
             }
         }
@@ -115,29 +121,9 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
         return this.arrayList.length == this.elementsInArray;
     }
 
-    //Copies the current ArrayList to an array double the size of the current one
-    private void copyArray(String str) {
-        int size = 0;
-        if(str.equals("double")) {
-            size = this.arrayList.length * 2;
-        } else {
-            size = this.arrayList.length + size;
-        }
-        Object[] tempArray = new Object[size];
-
-        int temp = 0;
-
-        for(int i = 0; i < arrayList.length; i++, temp++) {
-            if(arrayList[i] == null) {
-                temp--;
-                continue;
-            }
-
-            tempArray[temp] = arrayList[i];
-        }
-
-        arrayList = null;
-        arrayList = new Object[tempArray.length];
-        arrayList = tempArray;
+    //Use the Array class to double the size of the current array
+    private void DoubleArray() {
+        size *= 2;
+        arrayList = Arrays.copyOf(arrayList, size);
     }
 }
