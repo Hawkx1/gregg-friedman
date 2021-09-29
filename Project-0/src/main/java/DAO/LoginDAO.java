@@ -1,5 +1,6 @@
 package DAO;
 
+import Utilities.ConnectionManager;
 import Utilities.MyArrayList;
 import models.LoginItem;
 import java.sql.*;
@@ -24,11 +25,6 @@ public class LoginDAO implements ProjectCRUD<LoginItem> {
     @Override
     public MyArrayList<LoginItem> getAllItems() throws SQLException {
         return null;
-    }
-
-    @Override
-    public void deleteByID(int id) throws SQLException {
-
     }
 
     public static boolean checkLogin(String user, String pass) throws SQLException {

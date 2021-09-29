@@ -65,13 +65,4 @@ public class AccountsDAO implements ProjectCRUD<AccountsItem> {
         }
         return testList;
     }
-
-    @Override
-    public void deleteByID(int account_id) throws SQLException {
-        String sql = "DELETE FROM accounts WHERE account_id = ?";
-        PreparedStatement pstmt = kahn.prepareStatement(sql);
-        pstmt.setInt(1, account_id);
-
-        pstmt.executeUpdate();
-    }
 }

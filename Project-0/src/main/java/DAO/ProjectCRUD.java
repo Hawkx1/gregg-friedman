@@ -14,7 +14,4 @@ public interface ProjectCRUD<T> {
         //query data from database, fill in empty model object
         public T getItemByID(int id) throws SQLException;
         public MyArrayList<T> getAllItems() throws SQLException;
-   //delete
-        //remove by ID
-        public void deleteByID(int id) throws SQLException;
 }

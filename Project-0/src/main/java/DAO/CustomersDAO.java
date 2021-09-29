@@ -44,9 +44,4 @@ public class CustomersDAO implements ProjectCRUD<CustomersItem> {
         ResultSet rs = stmt.executeQuery(sql);
         return null;
     }
-
-    @Override
-    public void deleteByID(int id) throws SQLException {
-
-    }
 }
