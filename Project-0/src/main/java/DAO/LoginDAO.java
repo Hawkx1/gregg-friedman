@@ -27,6 +27,41 @@ public class LoginDAO implements ProjectCRUD<LoginItem> {
         return null;
     }
 
+    public void RegisterAccount(String user, String pass, String fName, String lName, Double bal){
+        try {
+            String sql = "INSERT INTO accounts VALUES (?,?)";
+            PreparedStatement pstmt = kahn.prepareStatement(sql);
+            pstmt.setInt(1, 1003);
+            pstmt.setDouble(2, bal);
+
+            pstmt.executeUpdate();
+
+            sql = "INSERT INTO customers_to_accounts (customer_id, account_id) VALUES (?, ?)";
+            pstmt.setInt(1, 3);
+            pstmt.setInt(2, 1003);
+
+            pstmt.executeUpdate();
+
+            sql = "INSERT INTO customers VALUES (?, ?, ?)";
+            pstmt.setInt(1, 3);
+            pstmt.setString(2, fName);
+            pstmt.setString(3, lName);
+
+            pstmt.executeUpdate();
+
+            sql = "INSERT INTO logins VALUES(?, ?, ?)";
+            pstmt.setInt(1, 3);
+            pstmt.setString(2, user);
+            pstmt.setString(3, pass);
+
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static boolean checkLogin(String user, String pass) throws SQLException {
 
         String userName;

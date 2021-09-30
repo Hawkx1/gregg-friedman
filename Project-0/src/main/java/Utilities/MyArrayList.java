@@ -8,13 +8,11 @@ This is my implementation of a simple arraylist collection. It implements a simp
 public class MyArrayList<T> implements MyArrayListInterface<T>{
 
     private Object[] arrayList;
-    private int elementsInArray = 0;
+    private int elementsInArray;
     private int size;
 
     public MyArrayList() {
-
-        arrayList = new Object[5];
-        size = 5;
+        initalize();
     }
 
     /*
@@ -90,7 +88,13 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
 
     @Override
     public void clear() {
-        arrayList = null;
+        initalize();
+    }
+
+    private void initalize() {
+        arrayList = new Object[5];
+        size = 5;
+        elementsInArray = 0;
     }
 
     //Returns the first index of first occurrence of the object provided
