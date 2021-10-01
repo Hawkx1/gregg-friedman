@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class MainMenu extends View{
 
     public MainMenu(Scanner scanner) {
-        super("MainMenu", scanner);
+        super("Main Menu", scanner);
     }
 
     @Override
@@ -20,6 +20,7 @@ public class MainMenu extends View{
                 return;
             case "2":
                 viewManager.navigate("LoginView");
+                return;
             case "Q":
             case "q":
                 viewManager.setRunning(false);

@@ -1,11 +1,12 @@
 package Utilities;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /*
 This is my implementation of a simple arraylist collection. It implements a simplified list interface.
  */
-public class MyArrayList<T> implements MyArrayListInterface<T>{
+public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
 
     private Object[] arrayList;
     private int elementsInArray;
@@ -129,5 +130,23 @@ public class MyArrayList<T> implements MyArrayListInterface<T>{
     private void DoubleArray() {
         size *= 2;
         arrayList = Arrays.copyOf(arrayList, size);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size && arrayList[currentIndex] != null;
+            }
+
+            @Override
+            public T next() {
+                return (T) arrayList[currentIndex++];
+            }
+        };
     }
 }

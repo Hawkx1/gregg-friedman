@@ -1,9 +1,6 @@
 package Utilities;
 
-import views.LoginView;
-import views.MainMenu;
-import views.View;
-import views.ViewRegisterAccount;
+import views.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,6 +23,7 @@ public class ViewManager {
 
         //set up views
         viewList.add(new MainMenu(scanner));
+        viewList.add(new RegisteredView(scanner));
         viewList.add(new ViewRegisterAccount(scanner));
         viewList.add(new LoginView(scanner));
     }
@@ -38,9 +36,9 @@ public class ViewManager {
     }
 
     public void navigate(String destination) {
-        for(int i = 0; i < viewList.size(); i++) {
-            if(viewList.equals(destination)) {
-                nextView = viewList[i];
+        for(View view : viewList) {
+            if(view.getViewName().equals(destination)) {
+                nextView = view;
             }
         }
     }

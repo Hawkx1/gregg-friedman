@@ -16,10 +16,13 @@ public abstract class View {
         this.viewManager = viewManager.getViewManager();
     }
 
+    public View() {
+
+    }
+
     public String getViewName() {
         return viewName;
     }
 
     public abstract void renderView() throws SQLException;
     }
-}

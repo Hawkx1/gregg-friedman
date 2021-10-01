@@ -1,11 +1,7 @@
 package views;
 
-import DAO.AccountsDAO;
 import DAO.LoginDAO;
 import Utilities.ConnectionManager;
-import Utilities.ViewManager;
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -24,30 +20,24 @@ public class LoginView extends View{
         LoginDAO ldao;
         Connection kahn;
         Scanner sc = new Scanner(System.in);
-        //try {
-            kahn = ConnectionManager.getConnection();
-            ldao = new LoginDAO(kahn);
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        System.out.println("Enter your User Name: ");
-        username = sc.nextLine();
-        System.out.println("Enter Your Password: ");
-        password = sc.nextLine();
-        try {
-            validUser = LoginDAO.checkLogin(username, password);
-        } catch(SQLException e) {
-            e.printStackTrace();
-        }
-        if(validUser == true) {
-            System.out.println("Welcome" + username);
-        }
-        else {
-            System.out.println("User Not Found");
+        kahn = ConnectionManager.getConnection();
+        ldao = new LoginDAO(kahn);
+        while(validUser == false) {
+            System.out.println("Enter your User Name: ");
+            username = sc.nextLine();
+            System.out.println("Enter Your Password: ");
+            password = sc.nextLine();
+            try {
+                validUser = LoginDAO.checkLogin(username, password);
+                if (validUser == true) {
+                    viewManager.navigate("Registered View");
+                    viewManager.goToNextView();
+                } else {
+                    System.out.println("User Not Found");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
