@@ -1,5 +1,7 @@
 package Utilities;
 
+import Items.AccountItem;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -33,6 +35,14 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
     @Override
     public int size() {
         return size;
+    }
+
+    public int getElementsInArray() {
+        return elementsInArray;
+    }
+
+    public void setElementsInArray(int elementsInArray) {
+        this.elementsInArray = elementsInArray;
     }
 
     //adding an item to the end of the collection
@@ -74,7 +84,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
 
     //Allows to retrieve a value at any point of the array or return an error if out of bounds
     @Override
-    public Object get(int index) {
+    public AccountItem get(int index) {
         Object o = null;
 
         try {
@@ -84,7 +94,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
             System.out.println("The index that you entered is not within the bounds of this list");
             System.exit(-1);
         }
-        return o;
+        return (AccountItem) o;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class ViewRegisterAccount extends View{
         System.out.println("Please enter your opening balance:");
         OpeningBalance = scanner.nextDouble();
         dao.RegisterAccount(firstName, lastName, username, password, OpeningBalance);
-        System.out.println("Account Successfully Created");
+        System.out.println("Login Account Successfully Created");
         scanner.nextLine();
 
 

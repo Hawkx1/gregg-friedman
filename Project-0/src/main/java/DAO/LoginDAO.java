@@ -8,8 +8,9 @@ import java.sql.*;
 
 public class LoginDAO implements LoginCRUD {
     private static Connection kahn;
-    private static int account_id = 1001;
-    private static int customer_id = 1;
+    private int account_id;
+    private static int customer_id;
+    AccountsDAO adao = new AccountsDAO();
     private static RegisteredView reg = new RegisteredView();
     //RegisteredView reg = new RegisteredView();
 
@@ -17,8 +18,23 @@ public class LoginDAO implements LoginCRUD {
         this.kahn = kahn;
     }
 
+    private int getMostRecentCustomerId() throws SQLException{
+        int newId = 0;
+        String sql = "SELECT customer_id from customers";
+        PreparedStatement pstmt = kahn.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+
+        while(rs.next()) {
+            newId = rs.getInt("customer_id");
+        }
+        return newId;
+    }
     public void RegisterAccount(String fName, String lName, String user, String pass, Double bal) {
         try {
+            account_id = adao.getMostRecentAcctId();
+            account_id++;
+            customer_id = getMostRecentCustomerId();
+            customer_id++;
             String sql = "INSERT INTO accounts VALUES (?,?)";
             PreparedStatement pstmt = kahn.prepareStatement(sql);
             pstmt.setInt(1, account_id);
@@ -51,9 +67,7 @@ public class LoginDAO implements LoginCRUD {
 
             reg.setfName(fName);
             reg.setAccount_id(account_id);
-            account_id++;
-            customer_id++;
-
+            reg.setCustomer_id(customer_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,7 +82,7 @@ public class LoginDAO implements LoginCRUD {
         int account_id;
 
         try {
-            String sql = "SELECT user_name, password, first_name, a.account_id from logins l\n" +
+            String sql = "SELECT user_name, password, first_name, a.account_id, c.customer_id from logins l\n" +
                     "JOIN customers c ON l.customer_id = c.customer_id\n" +
                     "JOIN customers_to_accounts ca ON c.customer_id = ca.customer_id\n" +
                     "JOIN accounts a ON ca.account_id = a.account_id;";
@@ -80,8 +94,10 @@ public class LoginDAO implements LoginCRUD {
                 password = rs.getString("password");
                 fName = rs.getString("first_name");
                 account_id = rs.getInt("account_id");
+                customer_id = rs.getInt("customer_id");
                 reg.setfName(fName);
                 reg.setAccount_id(account_id);
+                reg.setCustomer_id(customer_id);
 
                 if (userName.equals(user) && password.equals(pass)) {
                     return true;

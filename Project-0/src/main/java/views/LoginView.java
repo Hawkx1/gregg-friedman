@@ -33,7 +33,7 @@ public class LoginView extends View{
                     viewManager.navigate("Registered View");
                     viewManager.goToNextView();
                 } else {
-                    System.out.println("User Not Found");
+                    System.out.println("Username/Password Combination Not Valid");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

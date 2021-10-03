@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9e87003-167a-4e83-a74f-19e7a50acbd1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/LoginCRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Items/AccountItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/PrintMyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignments/SQL Assignment.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignments/SQL Assignment.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BankMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BankMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project-0.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Project-0.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountsCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountsCRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CustomersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CustomersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ProjectCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountsCRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/ViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/AccountsItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/CtAItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/CustomersItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/LoginItem.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegisteredView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/RegisteredView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegisteredView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/ViewRegisterAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ViewRegisterAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +28,8 @@
       <list>
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,5 +97,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
