@@ -24,7 +24,6 @@ public class MainMenu extends View{
             case "Q":
             case "q":
                 viewManager.setRunning(false);
-                return;
         }
     }
 }
