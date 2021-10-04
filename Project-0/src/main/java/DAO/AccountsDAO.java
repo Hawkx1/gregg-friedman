@@ -75,9 +75,9 @@ public class AccountsDAO implements AccountsCR {
     }
 
     @Override
-    public void DepositFunds(int account_id, double amount) throws SQLException{
+    public boolean DepositFunds(int account_id, double amount) throws SQLException{
         //Checks if the amount brought in is positive if it is funds will be deposited
-        if(amount >= 0) {
+        if(amount > 0) {
             String sql = "UPDATE accounts " +
                   "SET balance = (balance + ?)" +
                   "WHERE account_id = ?";
@@ -87,17 +87,18 @@ public class AccountsDAO implements AccountsCR {
 
             pstmt2.executeUpdate();
 
-            System.out.println("Funds successfully deposited");
+            return true;
         } else
             System.out.println("Amount is less than or equal to 0 exiting program");
+        return false;
     }
 
     @Override
-    public void WithdrawFunds(int account_id, double amount) throws SQLException{
+    public boolean WithdrawFunds(int account_id, double amount) throws SQLException{
         int balance;
         //Checks if the amount brought in is positive the function will continue and get the balance attached to the
         //account_id
-        if(amount >= 0) {
+        if(amount > 0) {
             String sql = "SELECT balance from accounts WHERE account_id = ?";
             PreparedStatement pstmt = kahn.prepareStatement(sql);
             pstmt.setInt(1, account_id);
@@ -114,13 +115,26 @@ public class AccountsDAO implements AccountsCR {
                 pstmt2.setInt(2, account_id);
 
                 pstmt2.executeUpdate();
-
-                System.out.println("Funds successfully withdrawn");
+                return true;
             }
             else
                 System.out.println("Insufficient funds in account");
-        } else
+            return false;
+        } else {
             System.out.println("Amount is less than or equal to 0 exiting program");
+            return false;
+        }
+
+    }
+
+    public void TransferFunds(int acct_id1, int acct_id2, double amount) {
+        try {
+            if(WithdrawFunds(acct_id1, amount) && DepositFunds(acct_id2, amount))
+            System.out.println("Funds successfully transferred");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public MyArrayList<AccountItem> getAccountsByUser(String fName) {

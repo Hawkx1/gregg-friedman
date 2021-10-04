@@ -1,9 +1,6 @@
 package views;
 
 import DAO.LoginDAO;
-import Utilities.ViewManager;
-
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class ViewRegisterAccount extends View{
@@ -15,8 +12,9 @@ public class ViewRegisterAccount extends View{
     @Override
     public void renderView() {
         LoginDAO dao = new LoginDAO(viewManager.getKahn());
-        int selection;
+        String selection;
         boolean invalid = true;
+        boolean valid = true;
         String username;
         String password;
         String firstName;
@@ -35,35 +33,30 @@ public class ViewRegisterAccount extends View{
         password = scanner.nextLine();
         System.out.println("Please enter your opening balance:");
         OpeningBalance = scanner.nextDouble();
-        dao.RegisterAccount(firstName, lastName, username, password, OpeningBalance);
-        System.out.println("Login Account Successfully Created");
+        valid = dao.RegisterAccount(firstName, lastName, username, password, OpeningBalance);
         scanner.nextLine();
+        if(valid) {
+            System.out.println("Login Account Successfully Created");
 
-
-        System.out.println("What Would You Like To Do Next?: ");
-        System.out.println("1) Return to Main Menu");
-        System.out.println("2) Go to your account page");
-        selection = scanner.nextInt();
-        scanner.nextLine();
-        while(invalid)
-            try {
-                if(selection == 1) {
+            System.out.println("What Would You Like To Do Next?: ");
+            System.out.println("1) Return to Main Menu");
+            System.out.println("2) Go to your account page");
+            //If the user picks one or two the program will take them to either the Main Menu or their account page
+            //otherwise it will ask them to pick either 1 or 2.
+            while (invalid) {
+                selection = scanner.nextLine();
+                if (selection.equals("1")) {
                     viewManager.navigate("Main Menu");
-                    viewManager.goToNextView();
                     invalid = false;
-                } else if (selection == 2) {
+                } else if (selection.equals("2")) {
                     reg.setfName(firstName);
                     viewManager.navigate("Registered View");
-                    viewManager.goToNextView();
                     invalid = false;
-                }
-                else {
-                    System.out.println("Please select 1 or 2");
+                } else {
+                    System.out.println("Please select 1 or 2 (numeric values only)");
                     invalid = true;
                 }
             }
-            catch (SQLException e) {
-                e.printStackTrace();
-            }
+        }
     }
 }

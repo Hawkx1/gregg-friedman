@@ -1,7 +1,5 @@
 package DAO;
 
-//import Utilities.ConnectionManager;
-import Utilities.MyArrayList;
 import views.RegisteredView;
 
 import java.sql.*;
@@ -12,7 +10,6 @@ public class LoginDAO implements LoginCRUD {
     private static int customer_id;
     AccountsDAO adao = new AccountsDAO();
     private static RegisteredView reg = new RegisteredView();
-    //RegisteredView reg = new RegisteredView();
 
     public LoginDAO(Connection kahn) {
         this.kahn = kahn;
@@ -31,61 +28,69 @@ public class LoginDAO implements LoginCRUD {
         }
         return newId;
     }
-    public void RegisterAccount(String fName, String lName, String user, String pass, Double bal) {
-        try {
-            //getting highest account_id and customer_id then adding one to each
-            account_id = adao.getMostRecentAcctId();
-            account_id++;
-            customer_id = getMostRecentCustomerId();
-            customer_id++;
+    public boolean RegisterAccount(String fName, String lName, String user, String pass, Double bal) {
 
-            String sql = "INSERT INTO accounts VALUES (?,?)";
-            PreparedStatement pstmt = kahn.prepareStatement(sql);
-            pstmt.setInt(1, account_id);
-            pstmt.setDouble(2, bal);
+        boolean valid = false;
+        if(checkString(fName) && checkString(lName)) {
+            try {
+                //getting highest account_id and customer_id then adding one to each
+                account_id = adao.getMostRecentAcctId();
+                account_id++;
+                customer_id = getMostRecentCustomerId();
+                customer_id++;
 
-            pstmt.executeUpdate();
+                String sql = "INSERT INTO accounts VALUES (?,?)";
+                PreparedStatement pstmt = kahn.prepareStatement(sql);
+                pstmt.setInt(1, account_id);
+                pstmt.setDouble(2, bal);
 
-            sql = "INSERT INTO customers_to_accounts (customer_id, account_id) VALUES (?, ?)";
-            PreparedStatement pstmt2 = kahn.prepareStatement(sql);
-            pstmt2.setInt(1, customer_id);
-            pstmt2.setInt(2, account_id);
+                pstmt.executeUpdate();
 
-            pstmt2.executeUpdate();
+                sql = "INSERT INTO customers_to_accounts (customer_id, account_id) VALUES (?, ?)";
+                PreparedStatement pstmt2 = kahn.prepareStatement(sql);
+                pstmt2.setInt(1, customer_id);
+                pstmt2.setInt(2, account_id);
 
-            sql = "INSERT INTO customers VALUES (?, ?, ?)";
-            PreparedStatement pstmt3 = kahn.prepareStatement(sql);
-            pstmt3.setInt(1, customer_id);
-            pstmt3.setString(2, fName);
-            pstmt3.setString(3, lName);
+                pstmt2.executeUpdate();
 
-            pstmt3.executeUpdate();
+                sql = "INSERT INTO customers VALUES (?, ?, ?)";
+                PreparedStatement pstmt3 = kahn.prepareStatement(sql);
+                pstmt3.setInt(1, customer_id);
+                pstmt3.setString(2, fName);
+                pstmt3.setString(3, lName);
 
-            sql = "INSERT INTO logins VALUES(?, ?, ?)";
-            PreparedStatement pstmt4 = kahn.prepareStatement(sql);
-            pstmt4.setInt(1, customer_id);
-            pstmt4.setString(2, user);
-            pstmt4.setString(3, pass);
+                pstmt3.executeUpdate();
 
-            pstmt4.executeUpdate();
+                sql = "INSERT INTO logins VALUES(?, ?, ?)";
+                PreparedStatement pstmt4 = kahn.prepareStatement(sql);
+                pstmt4.setInt(1, customer_id);
+                pstmt4.setString(2, user);
+                pstmt4.setString(3, pass);
 
-            //sending First Name, customer_id and account_id to RegisteredView for further use
-            reg.setfName(fName);
-            reg.setAccount_id(account_id);
-            reg.setCustomer_id(customer_id);
-        } catch (SQLException e) {
-            e.printStackTrace();
+                pstmt4.executeUpdate();
+
+                //sending First Name, customer_id and account_id to RegisteredView for further use
+                reg.setfName(fName);
+                reg.setAccount_id(account_id);
+                reg.setCustomer_id(customer_id);
+                valid = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
+        else {
+            System.out.println("Invalid character detected in First or Last Name\n");
+            valid = false;
+        }
+        return valid;
     }
 
-    public static boolean checkLogin(String user, String pass){
+    public boolean checkLogin(String user, String pass) {
 
         String userName;
         String password;
         String fName;
         int account_id;
-
         try {
             String sql = "SELECT user_name, password, first_name, a.account_id, c.customer_id from logins l\n" +
                     "JOIN customers c ON l.customer_id = c.customer_id\n" +
@@ -115,5 +120,17 @@ public class LoginDAO implements LoginCRUD {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private boolean checkString(String str) {
+        boolean valid = true;
+        for(int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (!(ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <='Z')) {
+                valid = false;
+                break;
+            }
+        }
+        return valid;
     }
 }

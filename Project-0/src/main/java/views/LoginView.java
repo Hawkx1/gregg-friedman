@@ -3,7 +3,6 @@ package views;
 import DAO.LoginDAO;
 import Utilities.ConnectionManager;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class LoginView extends View{
@@ -27,17 +26,12 @@ public class LoginView extends View{
             username = sc.nextLine();
             System.out.println("Enter Your Password: ");
             password = sc.nextLine();
-            try {
-                validUser = LoginDAO.checkLogin(username, password);
+                validUser = ldao.checkLogin(username, password);
                 if (validUser == true) {
                     viewManager.navigate("Registered View");
-                    viewManager.goToNextView();
                 } else {
                     System.out.println("Username/Password Combination Not Valid");
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

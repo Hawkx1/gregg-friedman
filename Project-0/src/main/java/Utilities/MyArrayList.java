@@ -15,7 +15,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
     private int size;
 
     public MyArrayList() {
-        initalize();
+        initialize();
     }
 
     /*
@@ -32,6 +32,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
         this.size = i;
     }
 
+    //returns the size of the array
     @Override
     public int size() {
         return size;
@@ -48,9 +49,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
     //adding an item to the end of the collection
     @Override
     public void add(T t) {
-        if(checkIfArrayFull()) {
-            DoubleArray();
-        }
+        checkIfArrayFull();
 
         arrayList[elementsInArray] = t;
         elementsInArray++;
@@ -59,9 +58,7 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
     //Add an element anywhere in the array or return an error if out of bounds
     @Override
     public void add(int index, T t) {
-        if(checkIfArrayFull()) {
-            DoubleArray();
-        }
+        checkIfArrayFull();
 
         if(index >= arrayList.length) {
             System.out.println("The index is out of bounds for this list");
@@ -73,6 +70,8 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
 
         Object ob2;
 
+        //The loop cycles through the array starting at index. ob2 is given the value of arrayList at i+1 position.
+        // The arrayList at i+1 position is assigned the value of ob. Then the ob variable is assigned the value of ob2.
         for(int i = index; i < arrayList.length - 1; i++) {
             ob2 = arrayList[i+1];
             arrayList[i+1] = ob;
@@ -97,18 +96,19 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
         return (AccountItem) o;
     }
 
+    //crates a new arrayList and points the program to that list leaving the old one to be garbage collected
     @Override
     public void clear() {
-        initalize();
+        initialize();
     }
 
-    private void initalize() {
+    private void initialize() {
         arrayList = new Object[5];
         size = 5;
         elementsInArray = 0;
     }
 
-    //Returns the first index of first occurrence of the object provided
+    //Returns the index of first occurrence of the object provided or -1 if not found
     @Override
     public int find(T t) {
         for(int i = 0; i < arrayList.length; i++) {
@@ -131,15 +131,13 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
         }
     }
 
-    //Checks to see if the ArrayList is full
-    private boolean checkIfArrayFull() {
-        return this.arrayList.length == this.elementsInArray;
-    }
+    //Checks to see if the ArrayList is full and if it is doubles it
+    private void checkIfArrayFull() {
 
-    //Use the Array class to double the size of the current array
-    private void DoubleArray() {
-        size *= 2;
-        arrayList = Arrays.copyOf(arrayList, size);
+        if(this.arrayList.length == this.elementsInArray) {
+            size *= 2;
+            arrayList = Arrays.copyOf(arrayList, size);
+        }
     }
 
     @Override

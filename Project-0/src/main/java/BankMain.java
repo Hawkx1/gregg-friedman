@@ -1,6 +1,5 @@
 import Utilities.ConnectionManager;
 import Utilities.ViewManager;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 

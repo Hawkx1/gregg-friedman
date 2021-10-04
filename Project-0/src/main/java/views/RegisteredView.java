@@ -28,8 +28,9 @@ public class RegisteredView extends View{
         double amount;
         boolean isExists;
         while(registered) {
-            System.out.println("========== " + fName + "'s Page: ==========\n\n1) Create a bank account\n2) Deposit Funds to an " +
-                    "account\n3) Withdraw funds from an account\n4) Display all account balances\n5) Return to Main Menu");
+            System.out.println("========== " + fName + "'s Page: ==========\n\n1) Create a bank account\n" +
+                    "2) Deposit Funds to an account\n3) Withdraw funds from an account\n4) Transfer funds from one " +
+                    "account to another\n5) Display all account balances\n6) Return to Main Menu");
             String input = scanner.nextLine();
                 switch (input) {
                     case "1":
@@ -40,6 +41,7 @@ public class RegisteredView extends View{
                         System.out.println("Bank Account Successfully Created");
                         break;
                     case "2":
+                        boolean success;
                         System.out.println("Enter an account to deposit funds to: ");
                         account_id = scanner.nextInt();
                         scanner.nextLine();
@@ -50,10 +52,12 @@ public class RegisteredView extends View{
                             break;
                         amount = scanner.nextDouble();
                         scanner.nextLine();
-                        adao.DepositFunds(account_id, amount);
+                        success = adao.DepositFunds(account_id, amount);
+                        if (success)
+                            System.out.println("Funds successfully deposited");
                         break;
                     case "3":
-                        System.out.println("Enter an account to deposit funds to: ");
+                        System.out.println("Enter an account to withdraw funds from: ");
                         account_id = scanner.nextInt();
                         scanner.nextLine();
                         isExists = adao.CheckAccountExists(account_id, customer_id);
@@ -63,11 +67,27 @@ public class RegisteredView extends View{
                             break;
                         amount = scanner.nextDouble();
                         scanner.nextLine();
-                        adao.WithdrawFunds(account_id, amount);
+                        success = adao.WithdrawFunds(account_id, amount);
+                        if (success)
+                            System.out.println("Funds successfully withdrawn");
                         break;
                     case "4":
+                        int acct_id1, acct_id2;
+
+                        System.out.println("Enter account to transfer funds from: ");
+                        acct_id1 = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Enter account to transfer funds to: ");
+                        acct_id2 = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Enter amount to transfer: ");
+                        amount = scanner.nextDouble();
+                        scanner.nextLine();
+                        adao.TransferFunds(acct_id1, acct_id2, amount);
+                        break;
+                    case "5":
                         System.out.println("========== " + fName + "'s Page: ==========");
-                        MyArrayList<AccountItem> acctList = new MyArrayList<>();
+                        MyArrayList<AccountItem> acctList;
                         acctList = adao.getAccountsByUser(fName);
 
                         for(int i =0; i < acctList.getElementsInArray(); i++) {
@@ -75,16 +95,18 @@ public class RegisteredView extends View{
                         }
                         System.out.println("============================================");
                         break;
-                    case "5":
+                    case "6":
                         viewManager.navigate("Main Menu");
-                        viewManager.goToNextView();
+                        registered = false;
                         break;
+                    default:
+                        System.out.println("Please select a valid number (numeric values only)");
             }
         }
     }
 
     public void setfName(String fName) {
-        this.fName = fName;
+        RegisteredView.fName = fName;
     }
 
     public static void setAccount_id(int account_id) {

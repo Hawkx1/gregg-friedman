@@ -1,7 +1,4 @@
 package views;
-
-import Utilities.ViewManager;
-
 import java.util.Scanner;
 
 public class MainMenu extends View{
@@ -12,7 +9,7 @@ public class MainMenu extends View{
 
     @Override
     public void renderView() {
-        System.out.println("===MAIN MENU===\nEnter selection:\n\n1) Register an Account\n2) Login\nQ) Quit");
+        System.out.println("===MAIN MENU===\nEnter selection:\n\n1) Register an Account\n2) Login\n3) Quit");
         String input = scanner.nextLine();
         switch (input) {
             case "1":
@@ -21,9 +18,11 @@ public class MainMenu extends View{
             case "2":
                 viewManager.navigate("LoginView");
                 return;
-            case "Q":
-            case "q":
+            case "3":
                 viewManager.setRunning(false);
+                break;
+            default:
+                System.out.println("Please select a valid number (numeric values only)");
         }
     }
 }
