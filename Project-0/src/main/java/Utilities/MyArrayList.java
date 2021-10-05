@@ -70,8 +70,8 @@ public class MyArrayList<T> implements MyArrayListInterface<T>, Iterable<T>{
 
         Object ob2;
 
-        //The loop cycles through the array starting at index. ob2 is given the value of arrayList at i+1 position.
-        // The arrayList at i+1 position is assigned the value of ob. Then the ob variable is assigned the value of ob2.
+        /*The loop cycles through the array starting at index. ob2 is given the value of arrayList at i+1 position.
+         The arrayList at i+1 position is assigned the value of ob. Then the ob variable is assigned the value of ob2. */
         for(int i = index; i < arrayList.length - 1; i++) {
             ob2 = arrayList[i+1];
             arrayList[i+1] = ob;

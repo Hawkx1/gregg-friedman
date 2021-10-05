@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9e87003-167a-4e83-a74f-19e7a50acbd1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Assignments/SQL Assignment.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignments/SQL Assignment.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BankMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BankMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountsCR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountsCR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Log.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/RegisteredView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/RegisteredView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/ViewRegisterAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/ViewRegisterAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
