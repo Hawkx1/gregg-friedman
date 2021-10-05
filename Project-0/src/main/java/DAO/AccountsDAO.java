@@ -23,8 +23,8 @@ public class AccountsDAO implements AccountsCR {
         PreparedStatement pstmt = kahn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
-        //I will loop through the account_ids gotten from the accounts table until I have reached the end of the Result
-        // Set giving me the highest account_id then return that number
+        /*I will loop through the account_ids gotten from the accounts table until I have reached the end of the Result
+         Set giving me the highest account_id then return that number */
         while(rs.next()) {
             newId = rs.getInt("account_id");
         }
@@ -64,8 +64,8 @@ public class AccountsDAO implements AccountsCR {
         pstmt.setInt(2, account_id);
         ResultSet rs = pstmt.executeQuery();
 
-        //Checks to see if an account exists if the query returns empty the ResultSet will be empty and therefore the
-        // account does not exist
+        /*Checks to see if an account exists if the query returns empty the ResultSet will be empty and therefore the
+         account does not exist */
         if(!rs.next()) {
             System.out.println("Account does not exist or is not associated with your account. Please try again");
             return false;
@@ -96,8 +96,8 @@ public class AccountsDAO implements AccountsCR {
     @Override
     public boolean WithdrawFunds(int account_id, double amount) throws SQLException{
         int balance;
-        //Checks if the amount brought in is positive the function will continue and get the balance attached to the
-        //account_id
+        /*Checks if the amount brought in is positive the function will continue and get the balance attached to the
+        account_id */
         if(amount > 0) {
             String sql = "SELECT balance from accounts WHERE account_id = ?";
             PreparedStatement pstmt = kahn.prepareStatement(sql);
@@ -148,8 +148,8 @@ public class AccountsDAO implements AccountsCR {
             pstmt.setString(1, fName);
             ResultSet rs = pstmt.executeQuery();
 
-            //Takes the account_id and balances in the ResultSet and puts it into an AccountItem object then puts that
-            //object into my ArrayList implementation
+            /*Takes the account_id and balances in the ResultSet and puts it into an AccountItem object then puts that
+            object into my ArrayList implementation */
             while (rs.next()) {
                 AccountItem newItem = new AccountItem(rs.getInt("account_id"), rs.getDouble("balance"));
                 acctList.add(newItem);

@@ -10,6 +10,6 @@ public class PrintMyList {
         function" printf to show the balance part of the item as currency using a regular expression.
          */
         System.out.print(acctItem.getAccount_id() + " | ");
-        System.out.printf("$%.2f%n", acctItem.getBalance());
+        System.out.printf("$%.2f\n", acctItem.getBalance());
     }
 }

@@ -8,7 +8,6 @@ public class BankMain {
     public static void main(String[] args){
 
         ViewManager viewManager = ViewManager.getViewManager();
-        Connection kahn = ConnectionManager.getConnection();
 
         viewManager.navigate("Main Menu");
         while(viewManager.isRunning()) {

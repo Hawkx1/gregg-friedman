@@ -41,8 +41,8 @@ public class ViewRegisterAccount extends View{
             System.out.println("What Would You Like To Do Next?: ");
             System.out.println("1) Return to Main Menu");
             System.out.println("2) Go to your account page");
-            //If the user picks one or two the program will take them to either the Main Menu or their account page
-            //otherwise it will ask them to pick either 1 or 2.
+            /*If the user picks one or two the program will take them to either the Main Menu or their account page
+            otherwise it will ask them to pick either 1 or 2. */
             while (invalid) {
                 selection = scanner.nextLine();
                 if (selection.equals("1")) {

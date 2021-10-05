@@ -21,8 +21,8 @@ public class LoginDAO implements LoginCRUD {
         PreparedStatement pstmt = kahn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
-        //I will loop through the customer_ids gotten from the customer table until I have reached the end then return
-        //that number
+        /*I will loop through the customer_ids gotten from the customer table until I have reached the end then return
+        that number */
         while(rs.next()) {
             newId = rs.getInt("customer_id");
         }
@@ -33,7 +33,7 @@ public class LoginDAO implements LoginCRUD {
         boolean valid = false;
         if(checkString(fName) && checkString(lName)) {
             try {
-                //getting highest account_id and customer_id then adding one to each
+                //getting the highest account_id and customer_id then adding one to each
                 account_id = adao.getMostRecentAcctId();
                 account_id++;
                 customer_id = getMostRecentCustomerId();
@@ -99,8 +99,8 @@ public class LoginDAO implements LoginCRUD {
             Statement stmt = kahn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            //assigning values in the tables to variables then checking username and password brought it with each
-            // username and password in the table. If found boolean is set to true otherwise it returns false
+            /*assigning values in the tables to variables then checking username and password brought it with each
+            username and password in the table. If found boolean is set to true otherwise it returns false */
             while (rs.next()) {
                 userName = rs.getString("user_name");
                 password = rs.getString("password");
