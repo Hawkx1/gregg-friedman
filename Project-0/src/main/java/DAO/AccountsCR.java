@@ -9,7 +9,7 @@ public interface AccountsCR {
 
     //create
         //save object to database method
-        void newAcct(int custId, double balance);
+        boolean newAcct(int custId, double balance);
     //read
         //reads the database and returns with all account balances under the registered account's name
         MyArrayList<AccountItem> getAccountsByUser(String fName);

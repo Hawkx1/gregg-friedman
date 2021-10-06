@@ -31,28 +31,36 @@ public class AccountsDAO implements AccountsCR {
         return newId;
     }
     @Override
-    public void newAcct(int custId, double balance) {
-        try {
-            //takes the highest account number then adds one to it
-            int newAcctId = getMostRecentAcctId();
-            newAcctId++;
+    public boolean newAcct(int custId, double balance) {
+        boolean valid = false;
+        if (balance >= 0) {
+            try {
+                //takes the highest account number then adds one to it
+                int newAcctId = getMostRecentAcctId();
+                newAcctId++;
 
-            String sql = "INSERT INTO accounts VALUES(?, ?)";
-            PreparedStatement pstmt = kahn.prepareStatement(sql);
-            pstmt.setInt(1, newAcctId);
-            pstmt.setDouble(2, balance);
+                String sql = "INSERT INTO accounts VALUES(?, ?)";
+                PreparedStatement pstmt = kahn.prepareStatement(sql);
+                pstmt.setInt(1, newAcctId);
+                pstmt.setDouble(2, balance);
 
-            pstmt.executeUpdate();
+                pstmt.executeUpdate();
 
-            sql = "INSERT INTO customers_to_accounts (customer_id, account_id) VALUES(?, ?)";
-            PreparedStatement pstmt2 = kahn.prepareStatement(sql);
-            pstmt2.setInt(1, custId);
-            pstmt2.setInt(2, newAcctId);
+                sql = "INSERT INTO customers_to_accounts (customer_id, account_id) VALUES(?, ?)";
+                PreparedStatement pstmt2 = kahn.prepareStatement(sql);
+                pstmt2.setInt(1, custId);
+                pstmt2.setInt(2, newAcctId);
 
-            pstmt2.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+                pstmt2.executeUpdate();
+                valid = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("opening balance must be greater than or equal to 0");
+            valid = false;
         }
+        return valid;
     }
 
     @Override

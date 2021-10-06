@@ -34,11 +34,13 @@ public class RegisteredView extends View{
             String input = scanner.nextLine();
                 switch (input) {
                     case "1":
+                        boolean valid;
                         System.out.println("Enter an opening balance: ");
                         double balance = scanner.nextDouble();
                         scanner.nextLine();
-                        adao.newAcct(customer_id, balance);
-                        System.out.println("Bank Account Successfully Created");
+                        valid = adao.newAcct(customer_id, balance);
+                        if(valid)
+                            System.out.println("Bank Account Successfully Created");
                         break;
                     case "2":
                         boolean success;
